@@ -1,23 +1,20 @@
 <template>
   <div id="app" v-md-theme="'default'">
     <div>
-      <transition :name="list_animation">
         <component v-bind:is="activeView" class="view"></component>
-      </transition>
     </div>
 
     <div id="footer-base">
       <md-bottom-bar>
-        <md-bottom-bar-item md-icon="home" id="footer-home" 
-      md-active @click="changeView('Home', 'left')">
+        <md-bottom-bar-item md-icon="home" id="footer-home" md-active @click="changeView('Home')">
           <router-link to="/home" tag="div">Home</router-link>
         </md-bottom-bar-item>
 
-        <md-bottom-bar-item md-icon="search" id="footer-search" @click="changeView('Search', 'right')">
+        <md-bottom-bar-item md-icon="search" id="footer-search" @click="changeView('Search')">
           <router-link to="/search" tag="div">Search</router-link>
         </md-bottom-bar-item>
 
-        <md-bottom-bar-item md-icon="person" id="footer-me" @click="changeView('Me', 'right')">
+        <md-bottom-bar-item md-icon="person" id="footer-me" @click="changeView('Me')">
           <router-link to="/me" tag="div">Me</router-link>
         </md-bottom-bar-item>
       </md-bottom-bar>
@@ -42,14 +39,12 @@ export default {
  
   data () {
     return {
-      activeView: 'Home',
-      list_animation: 'fade-side-left'
+      activeView: 'Home'
     }
   },
 
   methods: {
-    changeView (viewname, direction) {
-      this.list_animation = 'fade-side-' + direction
+    changeView (viewname) {
       this.activeView = viewname
     }
   }
